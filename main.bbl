@@ -1,0 +1,221 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{BERK2016273}
+P.~Berk, M.~Hocevar, D.~Stajnko, A.~Belsak, Development of alternative plant
+  protection product application techniques in orchards, based on measurement
+  sensing systems: A review, Computers and Electronics in Agriculture 124
+  (2016) 273 -- 288.
+\newblock \href {https://doi.org/https://doi.org/10.1016/j.compag.2016.04.018}
+  {\path{doi:https://doi.org/10.1016/j.compag.2016.04.018}}.
+
+\bibitem{rosell2009obtaining}
+J.~R. Rosell, J.~Llorens, R.~Sanz, J.~Arno, M.~Ribes-Dasi, J.~Masip,
+  A.~Escol{\`a}, F.~Camp, F.~Solanelles, F.~Gr{\`a}cia, et~al., Obtaining the
+  three-dimensional structure of tree orchards from remote 2d terrestrial lidar
+  scanning, Agricultural and Forest Meteorology 149~(9) (2009) 1505--1515.
+
+\bibitem{hall2003characterising}
+A.~Hall, J.~Louis, D.~Lamb, Characterising and mapping vineyard canopy using
+  high-spatial-resolution aerial multispectral images, Computers \& Geosciences
+  29~(7) (2003) 813--822.
+
+\bibitem{Michaud200829}
+M.-A. Michaud, K.~Watts, D.~Percival, K.~Wilkie, Precision pesticide delivery
+  based on aerial spectral imaging, Canadian Biosystems Engineering / Le Genie
+  des biosystems au Canada 50 (2008) 29--215.
+
+\bibitem{gil2007variable}
+E.~Gil, A.~Escola, J.~Rosell, S.~Planas, L.~Val, Variable rate application of
+  plant protection products in vineyard using ultrasonic sensors, Crop
+  Protection 26~(8) (2007) 1287--1297.
+
+\bibitem{wandkar2018}
+S.~V. Wandkar, Y.~C. Bhatt, H.~Jain, S.~M. Nalawade, S.~G. Pawar, Real-time
+  variable rate spraying in orchards and vineyards: A review, Journal of The
+  Institution of Engineers (India): Series A 99~(2) (2018) 385--390.
+
+\bibitem{roudier2011TOI}
+P.~Roudier, B.~Tisseyre, H.~Poilv{\'e}, J.-M. Roger, A technical opportunity
+  index adapted to zone-specific management, Precision Agriculture 12~(1)
+  (2011) 130--145.
+
+\bibitem{Chan2004601}
+C.~Chan, J.~Schueller, W.~Miller, J.~Whitney, J.~Cornell, Error sources
+  affecting variable rate application of nitrogen fertilizer, Precision
+  Agriculture 5~(6) (2004) 601--616, cited By 13.
+\newblock \href {https://doi.org/10.1007/s11119-004-6345-2}
+  {\path{doi:10.1007/s11119-004-6345-2}}.
+
+\bibitem{saddem2017jai}
+R.~Saddem-Yagoubi, O.~Naud, P.~Cazenave, K.~Godary-Dejean, D.~Crestani,
+  Precision spraying: from map to sprayer control using model-checking, Journal
+  of Agricultural Informatics 8~(3) (2017) 1--10.
+
+\bibitem{MCSifakis}
+J.-P. Queille, J.~Sifakis, Specification and verification of concurrent systems
+  in cesar, in: International Symposium on programming, Springer, 1982, pp.
+  337--351.
+
+\bibitem{clarke1981design}
+E.~M. Clarke, E.~A. Emerson, Design and synthesis of synchronization skeletons
+  using branching time temporal logic, in: Workshop on Logic of Programs,
+  Springer, 1981, pp. 52--71.
+
+\bibitem{duflot2012practical}
+M.~Duflot, M.~Kwiatkowska, G.~Norman, D.~Parker, S.~Peyronnet, C.~Picaronny,
+  J.~Sproston, Practical applications of probabilistic model checking to
+  communication protocols (2012).
+
+\bibitem{clabaut2016industrial}
+M.~Clabaut, N.~Ge, N.~Breton, E.~Jenn, R.~Delmas, Y.~Fonteneau, Industrial
+  grade model checking: use cases, constraints, tools and applications (2016).
+
+\bibitem{Transformation2020}
+A.~Pakonen, P.~Biswas, N.~Papakonstantinou, Transformation of non-standard
+  nuclear i\&c logic drawings to formal verification models, in: IECON 2020 The
+  46th Annual Conference of the IEEE Industrial Electronics Society, 2020, pp.
+  697--704.
+\newblock \href {https://doi.org/10.1109/IECON43393.2020.9255176}
+  {\path{doi:10.1109/IECON43393.2020.9255176}}.
+
+\bibitem{IndustrieMC}
+X.~Xin, S.~L. Keoh, M.~Sevegnani, M.~Saerbeck, Dynamic probabilistic model
+  checking for sensor validation in industry 4.0 applications, in: 2020 IEEE
+  International Conference on Smart Internet of Things (SmartIoT), 2020, pp.
+  43--50.
+\newblock \href {https://doi.org/10.1109/SmartIoT49966.2020.00016}
+  {\path{doi:10.1109/SmartIoT49966.2020.00016}}.
+
+\bibitem{alur1990automata}
+R.~Alur, D.~Dill, Automata for modeling real-time systems, in: International
+  Colloquium on Automata, Languages, and Programming, Springer, 1990, pp.
+  322--335.
+
+\bibitem{berthomieu1991modelling}
+D.~M. Berthomieu~B., Modeling and verification of time dependent systems using
+  time petri nets, IEEE Transactions on Software Engineering 17 (1991)
+  259–273.
+
+\bibitem{MC_BaierKatoen}
+C.~Baier, J.-P. Katoen, Principles of Model Checking (Representation and Mind
+  Series), The MIT Press, 2008.
+
+\bibitem{mazzanti2018ten}
+F.~Mazzanti, A.~Ferrari, Ten diverse formal models for a cbtc automatic train
+  supervision system, arXiv preprint arXiv: 1803.10324 (2018).
+
+\bibitem{bengtsson2003timed}
+J.~Bengtsson, W.~Yi, Timed automata: Semantics, algorithms and tools, in:
+  Advanced Course on Petri Nets, Springer, 2003, pp. 87--124.
+
+\bibitem{dusseux2015paturmata}
+P.~Dusseux, Y.~Zhao, M.-O. Cordier, T.~Corpetti, L.~Delaby, C.~Gascuel-Odoux,
+  L.~Hubert-Moy, Paturmata, a model to manage grassland under climate change,
+  Agronomy for sustainable development 35~(3) (2015) 1087--1093.
+
+\bibitem{largouet:2012}
+C.~Largou{\"e}t, M.-O. Cordier, Y.-M. Bozec, Y.~Zhao, G.~Fontenelle, Use of
+  timed automata and model-checking to explore scenarios on ecosystem models,
+  Environmental Modelling \& Software 30 (2012) 123--138.
+
+\bibitem{revised2006ametist}
+F.~Vaandrager,
+  \href{\url{http://www.cs.ru.nl/F.Vaandrager/AMETIST/del2.2.2.pdf}}{Advanced
+  methods for timed systems, ametist deliverable 2.2. 2} (2006).
+\newline\urlprefix\url{\url{http://www.cs.ru.nl/F.Vaandrager/AMETIST/del2.2.2.pdf}}
+
+\bibitem{priced2004}
+G.~Behrmann, K.~G. Larsen, J.~I. Rasmussen, Priced timed automata: Algorithms
+  and applications, in: FMCO, Vol. 3657, Springer, 2004, pp. 162--182.
+
+\bibitem{behrmann2005optimal}
+G.~Behrmann, K.~G. Larsen, J.~I. Rasmussen, Optimal scheduling using priced
+  timed automata, ACM SIGMETRICS Performance Evaluation Review 32~(4) (2005)
+  34--40.
+
+\bibitem{saddem2020model}
+R.~Saddem-Yagoubi, O.~Naud, K.~Godary-Dejean, D.~Crestani, Model-checking
+  precision agriculture logistics: the case of the differential harvest,
+  Discrete Event Dynamic Systems 30 (2020) 579--604.
+
+\bibitem{yagoubi2018new}
+R.~S. Yagoubi, O.~Naud, K.~G. Dejean, D.~Crestani, New approach for
+  differential harvest problem: the model checking way, IFAC-PapersOnLine
+  51~(7) (2018) 57--63.
+
+\bibitem{behrmann2001guiding}
+G.~Behrmann, A.~Fehnker, T.~Hune, K.~G. Larsen, P.~Petterson, J.~Romijn,
+  Guiding and cost-optimality in uppaal, in: AAAI-Spring Symposium on
+  Model-based Validation of Intelligence, 2001, pp. 66--74.
+
+\bibitem{burch1992symbolic}
+J.~R. Burch, E.~M. Clarke, K.~L. McMillan, D.~L. Dill, L.-J. Hwang, Symbolic
+  model checking: $10^{20}$ states and beyond, Information and computation
+  98~(2) (1992) 142--170.
+
+\bibitem{godefroid1996partial}
+P.~Godefroid, J.~Van~Leeuwen, J.~Hartmanis, G.~Goos, P.~Wolper, Partial-order
+  methods for the verification of concurrent systems: an approach to the
+  state-explosion problem, Vol. 1032, Springer Heidelberg, 1996.
+
+\bibitem{boucheneb2009covering}
+H.~Boucheneb, K.~Barkaoui, Covering steps graphs of time petri nets, Electronic
+  Notes in Theoretical Computer Science 239 (2009) 155--165.
+
+\bibitem{hendriks2003adding}
+M.~Hendriks, G.~Behrmann, K.~Larsen, P.~Niebert, F.~Vaandrager, Adding symmetry
+  reduction to uppaal, in: International Conference on Formal Modeling and
+  Analysis of Timed Systems, Springer, 2003, pp. 46--59.
+
+\bibitem{xiongkui2011precision}
+H.~Xiongkui, Z.~Aijun, L.~Yajia, S.~Jianli, Precision orchard sprayer based on
+  automatically infrared target detecting and electrostatic spraying
+  techniques, International Journal of Agricultural and biological engineering
+  4~(1) (2011) 35--40.
+
+\bibitem{naud2014comparative}
+O.~Naud, A.~Verges, O.~Hebrard, S.~Codis, J.~Douzals, B.~Ruelle, Comparative
+  assessment of agro-environmental performance of vineyard sprayers using a
+  physical full scale model of a vineyard row, 2014.
+
+\bibitem{D2.3}
+M.~Ghazel, J.~Beugin, R.~Saddem, S.~Marrone, B.~Janssen, C.~Flammini,
+  F.and~Seceleanu, M.-U. Sanwal, S.~Benerecetti, M.and~Libutti, E.~Napolitano,
+  F.~Mogavero, R.~Nardone, A.~Peron, V.~Vittorini, J.~Aoun, Moving block
+  verification and validation, deliverable d2.3 of performingrail project.
+  (2022).
+
+\bibitem{cheraiet2020algorithm}
+A.~Cheraiet, O.~Naud, M.~Carra, S.~Codis, F.~Lebeau, J.~Taylor, An algorithm to
+  automate the filtering and classifying of 2d lidar data for site-specific
+  estimations of canopy height and width in vineyards, Biosystems Engineering
+  200 (2020) 450--465.
+
+\bibitem{lorenz1994phanologische}
+D.~Lorenz, K.~Eichhorn, H.~Bleiholder, R.~Klose, U.~Meier, E.~Weber,
+  Ph{\"a}nologische entwicklungsstadien der weinrebe (vitis vinifera l. ssp.
+  vinifera). codierung und beschreibung nach der erweiterten bbch-skala,
+  Wein-Wissenschaft 49~(2) (1994) 66--70.
+
+\bibitem{Model_2016}
+J.~W. Jones, al., Brief history of agricultural systems modeling, Agricultural
+  Systems 155 (2016) 240--254.
+\newblock \href {https://doi.org/10.1016/j.agsy.2016.05.014}
+  {\path{doi:10.1016/j.agsy.2016.05.014}}.
+
+\bibitem{MCS_2010}
+e.~a. Legay~A., Statistical model checking: An overview, in: Runtime
+  Verification, Springer Berlin Heidelberg, Berlin, Heidelberg, 2010, pp.
+  122--135.
+
+\bibitem{MCS_2013}
+K.~Guldstrand~Larsen, Priced timed automata and statistical model checking, in:
+  E.~B. Johnsen, L.~Petre (Eds.), Integrated Formal Methods, Springer Berlin
+  Heidelberg, Berlin, Heidelberg, 2013, pp. 154--161.
+
+\end{thebibliography}

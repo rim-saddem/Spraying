@@ -1,0 +1,126 @@
+\newpage
+
+\section{Detailed description of $PTA\_PSP$ model}
+\label{AnnexeModeles}
+In this annex, we proposed a detailed description of each automaton that is part of the model $PTA\_PSP$. Let us recall that $PTA\_PSP$ model is composed of 7 Priced Timed Automata:
+\begin{itemize}
+    \item \texttt{Row start automaton (SA)}: manages the starting of spray in the row,
+    \item \texttt{Movement automaton (MA)}: manages the movements of the sprayer inside the row from block to block,
+    \item \texttt{Anticipation automaton (AA)}: selects the spraying command for the next vegetation block,
+    \item \texttt{Control nozzles automaton (CA)}: manages the opening and closing of each nozzle according to the chosen spraying command,
+    \item \texttt{Nozzles automata (NA$_i$)}: represent the behaviour of each nozzle (3 nozzles represented by 3 automata).
+\end{itemize}
+
+\subsection{\textbf{Row start automaton (SA)}}
+This automaton, represented in the figure \ref{fig:start}, manages the startup phase. It sends a command event $"start0"$ to the \textit{anticipation automaton} to select a command for the first block. When selection is finished, it receives from the \textit{anticipation automaton}, a $"finishAnticipation"$ event. Then, it sends $"start1"$ event to the \textit{nozzle control automaton} to activate the nozzles for the first block. It waits $max\_temp\_open\_Nozzle$ the time required for nozzles to be opened. It sends to the \textit{movement automaton} a $"new \_block" $ event to start spraying at the first block. When spraying is finished it receives an $"endRow"$ event. When all nozzles are closed ($allClose == true$), it passes to the state $end$.
+
+    \begin{figure} [h!]
+\begin{center}
+\includegraphics[width = 8cm]{Vegetation.pdf}
+\caption{Row Start automaton} \label{fig:start}
+\end{center}
+\end{figure}
+
+
+\subsection{\textbf{Anticipation automaton.}} This automaton, represented in the figure \ref{fig:ant}, makes it possible to select a command for the following block. The two possible commands for each vegetation block are $ C_ {best} $ and $ C_ {alt} $ which are stored respectively in $ CBest $ and $ CAlt $. \textit{The anticipation automaton} first receives the signal $"start0"$ from \textit{the Row Start automaton}. Then, if the value of the variable $ Choice $ is -1 (choice not predefined) then it chooses an order from $ CBest $ and $ CAlt $, stores its choice in the variable $ Choice $ and calls the function $ updateNextNozzle $. If $ Choice $ is predefined, then this choice is followed. Finally, \textit{the anticipation automaton} sends, in broadcast, the event $"finishAnticipation"$ and updates the variable $anticipe$ to \texttt{false} so as not to loop indefinitely.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=9cm]{Anticipation.pdf}
+\caption{Anticipation automaton} 
+\label{fig:ant}
+\end{center}
+\end{figure}
+
+ \subsection{\textbf{Movement automaton.}} This automaton, represented on the figure ~\ref{fig:dep}, allows to represent the movement of the sprayer. The time required to spray a vegetation block is computed in step 2, based on the length of the block and the speed of the sprayer. This information is stored in the $ tempo\_block $ variable. At the start,the sprayer is in the $"Init"$ state. When it receives the start event $"new\_block"$, it goes to the state $ block $. The state $ block $ has an invariant $ t\_block <= tempo\_block [currentBlock] $, the sprayer remain in this state for the duration of this block. The state $ block $ has also a guard $ t\_block == tempo\_block [currentBlock ] $ on its outgoing transitions, the automaton signals the end of a block by sending in broadcast the event $"new\_block"$ and the end of a row by sending in broadcast the event $"endRow"$ (it then returns to the state $ Init $).
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.6, angle =90 ]{dep.pdf}
+\caption{Movement automaton} 
+\label{fig:dep}
+\end{center}
+\end{figure}
+
+\subsection{\textbf{Nozzles automata.}} These automata represent the behavior of each nozzle (figure \ref{fig:nozzle}). Each of these automata has four states: $OFF$ (initial state), $ON$, $TransitionOfOpen$ (opening) and $TransitionOfClose$ (closing). It receives the signals $"onNozzle"$ and $"offNozzle"$ to pass from a state to another. 
+The nozzles response time, for opening or closing, is supposed to be a fixed and known ($ max \_temp\_open\_Nozzle $, $ max\_temp\_close\_Nozzle $). It is set at 0.2s in our example.
+
+\begin{figure}[ht!]
+\begin{center}
+\includegraphics[scale = 0.8, angle =90]{nozzle.png}
+\caption{Nozzles automata} 
+\label{fig:nozzle}
+\end{center}
+\end{figure}
+
+\subsection{\textbf{Control Nozzles automaton.}} The role of this automaton, described in figure \ref{fig:CtrNozzle}, is to control the nozzles. When it receives the signal $ "finishAnticipation"$ from \textit{the Anticipation automaton}, it calls the function $control ()$ which determines the nozzles to be opened or closed for the next block. To secure the quantity of sprayed product in each block, the nozzles selected for opening are opened 0.2s before the start of the block (the value 0.2 is stored in the constant $ max\_temp\_open\_Nozzle $). Conversely, those which must be closed will not be completely closed until 0.2s after the block change (the value 0.2 is stored in the constant $ max\_temp\_close\_Nozzle $). To open a nozzle i, the \textit{nozzle control automaton} sends, 
+$max\_temp\_open\_Nozzle $ before the end of the current block, the event $onNozzle [i]$  (see guard $t\_block <= tempo\_block[currentBlock]\-\ max\_temp\_open\_Nozzle $), and to close the nozzle i, it sends the event $offNozzle [i]$, after having received the synchronization event $new\_block$ from \textit{the movement automaton}. As soon as the commands on the nozzles are effective, then the variable $anticipe$ is set to $ True $ to allow anticipation for the next block.
+
+
+\begin{figure}[h!] 
+\begin{center}
+\includegraphics[scale = 0.7]{ControlBuse.png}
+\caption{Control Nozzles automaton} 
+\label{fig:CtrNozzle}
+\end{center}
+\end{figure}
+
+
+
+%\textbf{Constants}. Let us recall that the two possible commands for each vegetation block are $C_{best}$ and $C_{alt}$, resulting from the application of step 2 of the AMPS method to LiDAR data.
+%\vskip 0.1 cm
+%$tempo\_bloc []:$ is an array of integers that stores the duration of each block.
+%\vskip 0.1 cm
+%$ CBest [] $: is an array of integers which allows to store the command $C_{best} $ for each block. A code is assigned to each possible command. Code 0 is assigned to the command $ -- $ (all hands are closed), code 1 is assigned with the command $LH$, code 2 is assigned to the command $CH$ and code 4 is assigned to the command$ HH $. The codes are additive according to the activated hands. For example, if the command $C_{best} $ in the first block is $LH \& HH $ then the code is 5 and $ CBest [0] = 5 $. 
+%\vskip 0.1 cm
+%$ CAlt[] $: is an array of integers which stores the command $ C_ {alt} $ for each block. % If for the first block of rank $ C_ {alt} $ = $ LH $ then $ Command2 [0] $ is 2.
+%\vskip 0.1 cm
+%$ Nb\_bloc $: is a integer, it represents the number of blocks forming the studied row.
+%\vskip 0.2 cm
+
+%\textbf{Variables.} $ currentStateNozzle [] $: is an array representing the current state of the nozzles. $ currentStateNozzle [0] $ represents the state of $ LH $ nozzle, \\$ currentStateNozzle [1] $ represents the state of $ CH $ nozzle, and $ currentStateNozzle [2] $ represents that of $ HH $ nozzle. If the state is \textit{OFF} then $ currentStateNozzle [i] $ is set to 0. If the state is \textit{TransitionOfOpen} (opening) or \textit{TransitionOfClose} (closing) then $ currentStateNozzle [i] $ is set to 2. If the state is \textit{ON} then $currentStateNozzle $ is set to 1.
+%\vskip 0.1 cm
+%$ nextStateNozzle [] $: is an array representing the state of the nozzles for the next block. Two cases are possible for each nozzle, either the nozzle will be open (code 1) or the nozzle will be closed (code 0). $ nextStateNozzle [0] $ represents the next state of $ LH $, $ nextStateNozzle [1] $ the next state of $ CH $ and $ nextStateNozzle [2] $ represents the next state of $ HH $. 
+%\vskip 0.1 cm
+%$ Choice [] $: is an array of integers which allows to store for each block the command chosen from $ C_{best} $ or $ C_{alt} $ by \textit{the anticipation automaton}. A code is assigned to each possible command : for $ C_ {best} $, the code is 1 and for $C_{alt} $, the code is 2.
+%\vskip 0.1 cm
+%$ currentBlock $: is an integer representing the number of the current vegetation block.
+%\vskip 0.1 cm
+%$ nextblock $: is an integer representing the number of the next vegetation block.
+%\vskip 0.1 cm
+%$ anticipate $: is a boolean which prevents \textit{the anticipation automaton} to loop infinitely.
+%\vskip 0.1 cm
+%$ allClose $: is a boolean variable, it is \texttt{true} when all the nozzles are closed and \texttt{false} otherwise.
+%\vskip 0.2 cm
+
+%\vskip 0.2 cm
+%\textit{Multiple channels (broadcast)}: 
+%\begin{itemize}
+%    \item $endRow $: is sent by the \textit{movement automaton} to indicate the end of the row.
+%    \item $ finishAnticipation $: is sent by the \textit{anticipation automaton} to indicate that a command has been selected for the first or the next block. 
+%\end{itemize}
+%\vskip 0.1 cm
+
+%\textit{Binary channels:} 
+%\begin{itemize}
+%\item $ start0 $: it is sent by the \textit{row start automaton} to the \textit{anticipation automaton}, it allows to select a command for the first block.
+%\item $ start1 $: it is sent from the \textit{row start automaton} to the \textit{nozzle control automaton}, it allows to activate the nozzles for the first block.
+%\item $ new \_Block $: it is sent by the \textit{movement automaton} to the \textit{nozzle control automaton} at the end of each block.
+%\item $ new \_block \_dem $: it is sent by the \textit{row start automaton} to the \textit{movement automaton} to trigger the movement for the first block.
+%\item $ endRow $: it is sent by the \textit{movement automaton} to the \textit{row start automaton} to indicate the end of the row.
+%\item $ on / offNozzle [] $: these channels are sent by the \textit{nozzle control automaton} to the \textit{nozzle automata} to start the opening or closing of the nozzles.
+%\end{itemize}
+%\vskip 0.2 cm
+
+%\textbf{Functions}. $ updateNextNozzle () $: this function takes as input the command code and according to the code value, it updates the variable $ nextStateNozzle $. For example, if the code value is 5 then the command selected for the next block is $ HH \& LH $, then the function updates the variables to the following values: $ nextStateNozzle [0] = 1 $, $ nextStateNozzle [ 1] = $ 0 and $ nextStateNozzle [2] = $ 1.
+%\vskip 0.2 cm
+%$ control () $: this function determines, from the current command and the command selected for the next block, which nozzles should be opened and which should be closed for the next block. For example, let us consider the following situation: $ currentStateNozzle [0] = 0 $, $ currentStateNozzle [1] = 1 $, $ currentStateNozzle [2] = 1 $, $ nextStateNozzle [0] = 0 $, $ nextStateNozzle [1 ] = 0 $ and $ nextStateNozzle [2] = 1 $, $control()$ function will close the center nozzle for the next block. 
+
+
+
+%\begin{figure} [h!]
+%\begin{center}
+%\includegraphics[width = 12cm]{RowStart.png}
+%\caption{Row Start automaton} \label{fig:start}
+%\end{center}
+%\end{figure}

@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+The style file: elsarticle-num.bst
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+A level-1 auxiliary file: Annexe.aux
+Reallocating 'name_of_file' (item size: 1) to 18 items.
+A level-1 auxiliary file: AnnexeDecompo.aux
+Database file #1: bib.bib
+Warning--empty journal in duflot2012practical
+Warning--empty journal in clabaut2016industrial
+Warning--empty journal in revised2006ametist
+Warning--empty booktitle in naud2014comparative
+Warning--empty pages in naud2014comparative
+Warning--empty journal in D2.3
+You've used 40 entries,
+            2952 wiz_defined-function locations,
+            931 strings with 13824 characters,
+and the built_in function-call counts, 13867 in all, are:
+= -- 1251
+> -- 554
+< -- 13
++ -- 211
+- -- 171
+* -- 990
+:= -- 1873
+add.period$ -- 45
+call.type$ -- 40
+change.case$ -- 39
+chr.to.int$ -- 0
+cite$ -- 46
+duplicate$ -- 447
+empty$ -- 1528
+format.name$ -- 208
+if$ -- 3566
+int.to.chr$ -- 0
+int.to.str$ -- 40
+missing$ -- 42
+newline$ -- 134
+num.names$ -- 42
+pop$ -- 291
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 889
+stack$ -- 0
+substring$ -- 804
+swap$ -- 128
+text.length$ -- 13
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 6
+while$ -- 108
+width$ -- 42
+write$ -- 345
+(There were 6 warnings)

@@ -1,0 +1,43 @@
+\documentclass{article}
+\begin{document}
+\nocite{*}
+\bibliography{pulv}
+\bibliographystyle{plain}
+\end{document}
+
+pneumatique, plusieurs hauteurs, fouette l'arbre
+https://www.arboriculture-fruitiere.com/articles/technique-fruit/leclaircissage-mecanique-prefloral-du-pommier
+
+CTIFL inrae
+
+C'est plus fin, 
+
+compter les fleurs dans un arbre de pomme, 
+
+Adaptation arbre par arbre, pbjectif est de travailler par zone, comment utiliser machine pour avoir un optimum local pour chaque arbre, un optimum global pour tous
+
+
+
+To retain\\
+
+Basic MC algorithms do not include the ability to find an execution path that verifies a property and which is optimal according to a cost criterion chosen by a user. This functionality could be greatly useful in many contexts, as for example in our case to find a way to optimize product while performing crop treatment. For that, it is necessary to use a specific technique that combines verification and optimization which is the Cost Optimal Reachability Analysis (CORA).
+
+symbolic model-checking by BDD (Binary Decision Diagram) is a technique where states are symbolically represented by decision diagrams. This symbolic representation allows for a more compact representation of the state space (\cite{burch1992symbolic}).
+
+The partial order techniques \cite{godefroid1996partial, boucheneb2009covering} are based on the idea of eliminating as much as possible unnecessary interlacing between processes when constructing the state space. If the differentiation of the order of firing of the parallel transitions is irrelevant for the property to be verified, one can refrain from explicitly representing the different paths of the interlacing.
+
+The symmetry exploitation technique \cite{hendriks2003adding} consists in exploiting the symmetries of the system to build a reduced state space. The structural symmetries of the system induce symmetries on the state space graph. The notion of symmetry of an object can be defined as the stability of this object with respect to certain transformations.
+
+It is also important to note that modeling is a privileged step for the prevention of the combinatorial explosion. Indeed, the choice of abstractions and simplifications greatly influences the size of the state space. However, these abstractions must be made while guaranteeing the correctness of the verification of the properties (complete and simplified models must have an equivalent behavior with regard to the verification). For this, and to be effective, it is essential to be an expert in the semantics of the modeling language as well as in the underlying verification technique.
+
+
+For the optimization of modeling, the choice of abstractions and simplifications influences greatly the size of the state space. However, complete and simplified models must have an equivalent behavior with regard to the verification. Thus, abstraction must be made while guaranteeing the correctness of the verification of the properties. For this, it is essential to be an expert in the semantics of the modeling language as well as in the underlying verification technique.
+
+% \paragraph{Verification \textit{on-the-fly}:} The on-the-fly verification technique (\textit{on-the-fly}) allows to analyze the system without building the entire state space which makes it possible to reduce the number of states explored, and consequently to reduce the verification time and the memory used. This reduction is however only effective for certain properties, which does not require, by definition, to traverse the whole of the graph (typically accessibility). However, on-the-fly verification is also useful for other properties (invariants for example), when the property is violated: the first state that does not satisfy the property stops the verification process, which shortens the detection process. 'error when there is one.
+% \vskip 0.2 cm
+% There are mainly two families of algorithms that allow the analysis of timed systems on the fly. The first, called backward analysis, consists of iteratively calculating the predecessors of the states we are trying to achieve and testing whether an initial state is found in the calculated set. The second, called forward analysis, consists of iteratively calculating the successors of the initial states and testing whether the state we are trying to achieve has already been calculated.
+
+% \paragraph {Check in width or depth first:}
+% Even in the case where the verification method only requires traversing part of the state space, the choice of the traversal (and construction) strategy of the state graph of the system described in the sub-sub -section \ref{sec:pathgraph} can also have an influence on the overall performance of the check.
+
+%Hierarchical verification is an alternative solution to resolve or avoid the state space explosion problem. "Hierarchical verification of WS-BPEL". \\ The abstract model is used to generate a state space and explore the model's properties.
