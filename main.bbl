@@ -6,12 +6,9 @@
   \def\href#1#2{#2} \def\path#1{#1}\fi
 
 \bibitem{BERK2016273}
-P.~Berk, M.~Hocevar, D.~Stajnko, A.~Belsak, Development of alternative plant
-  protection product application techniques in orchards, based on measurement
-  sensing systems: A review, Computers and Electronics in Agriculture 124
-  (2016) 273 -- 288.
-\newblock \href {https://doi.org/https://doi.org/10.1016/j.compag.2016.04.018}
-  {\path{doi:https://doi.org/10.1016/j.compag.2016.04.018}}.
+Development of alternative plant protection product application techniques in
+  orchards, based on measurement sensing systems: A review, "Computers and
+  Electronics in Agriculture.
 
 \bibitem{rosell2009obtaining}
 J.~R. Rosell, J.~Llorens, R.~Sanz, J.~Arno, M.~Ribes-Dasi, J.~Masip,
@@ -144,7 +141,7 @@ R.~Saddem-Yagoubi, O.~Naud, K.~Godary-Dejean, D.~Crestani, Model-checking
   Discrete Event Dynamic Systems 30 (2020) 579--604.
 
 \bibitem{yagoubi2018new}
-R.~S. Yagoubi, O.~Naud, K.~G. Dejean, D.~Crestani, New approach for
+R.~S. Yagoubi, O.~Naud, K.~G. Godary-Dejean, D.~Crestani, New approach for
   differential harvest problem: the model checking way, IFAC-PapersOnLine
   51~(7) (2018) 57--63.
 
@@ -201,21 +198,5 @@ D.~Lorenz, K.~Eichhorn, H.~Bleiholder, R.~Klose, U.~Meier, E.~Weber,
   Ph{\"a}nologische entwicklungsstadien der weinrebe (vitis vinifera l. ssp.
   vinifera). codierung und beschreibung nach der erweiterten bbch-skala,
   Wein-Wissenschaft 49~(2) (1994) 66--70.
-
-\bibitem{Model_2016}
-J.~W. Jones, al., Brief history of agricultural systems modeling, Agricultural
-  Systems 155 (2016) 240--254.
-\newblock \href {https://doi.org/10.1016/j.agsy.2016.05.014}
-  {\path{doi:10.1016/j.agsy.2016.05.014}}.
-
-\bibitem{MCS_2010}
-e.~a. Legay~A., Statistical model checking: An overview, in: Runtime
-  Verification, Springer Berlin Heidelberg, Berlin, Heidelberg, 2010, pp.
-  122--135.
-
-\bibitem{MCS_2013}
-K.~Guldstrand~Larsen, Priced timed automata and statistical model checking, in:
-  E.~B. Johnsen, L.~Petre (Eds.), Integrated Formal Methods, Springer Berlin
-  Heidelberg, Berlin, Heidelberg, 2013, pp. 154--161.
 
 \end{thebibliography}

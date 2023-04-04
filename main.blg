@@ -9,51 +9,57 @@ A level-1 auxiliary file: Annexe.aux
 Reallocating 'name_of_file' (item size: 1) to 18 items.
 A level-1 auxiliary file: AnnexeDecompo.aux
 Database file #1: bib.bib
+I was expecting a `,' or a `}'---line 265 of file bib.bib
+ :  journal = {"Computers and Electronics in Agriculture}
+ :                                                       ",
+I'm skipping whatever remains of this entry
+Warning--empty author in BERK2016273
+Warning--empty year in BERK2016273
 Warning--empty journal in duflot2012practical
 Warning--empty journal in clabaut2016industrial
 Warning--empty journal in revised2006ametist
 Warning--empty booktitle in naud2014comparative
 Warning--empty pages in naud2014comparative
 Warning--empty journal in D2.3
-You've used 40 entries,
+You've used 37 entries,
             2952 wiz_defined-function locations,
-            931 strings with 13824 characters,
-and the built_in function-call counts, 13867 in all, are:
-= -- 1251
-> -- 554
-< -- 13
-+ -- 211
-- -- 171
-* -- 990
-:= -- 1873
-add.period$ -- 45
-call.type$ -- 40
-change.case$ -- 39
+            901 strings with 13270 characters,
+and the built_in function-call counts, 12465 in all, are:
+= -- 1107
+> -- 520
+< -- 11
++ -- 198
+- -- 161
+* -- 889
+:= -- 1700
+add.period$ -- 40
+call.type$ -- 37
+change.case$ -- 36
 chr.to.int$ -- 0
-cite$ -- 46
-duplicate$ -- 447
-empty$ -- 1528
-format.name$ -- 208
-if$ -- 3566
+cite$ -- 45
+duplicate$ -- 397
+empty$ -- 1369
+format.name$ -- 195
+if$ -- 3195
 int.to.chr$ -- 0
-int.to.str$ -- 40
-missing$ -- 42
-newline$ -- 134
-num.names$ -- 42
-pop$ -- 291
+int.to.str$ -- 37
+missing$ -- 39
+newline$ -- 123
+num.names$ -- 36
+pop$ -- 266
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 889
+skip$ -- 801
 stack$ -- 0
-substring$ -- 804
-swap$ -- 128
-text.length$ -- 13
+substring$ -- 692
+swap$ -- 104
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 6
-while$ -- 108
-width$ -- 42
-write$ -- 345
-(There were 6 warnings)
+warning$ -- 8
+while$ -- 95
+width$ -- 39
+write$ -- 313
+(There was 1 error message)
