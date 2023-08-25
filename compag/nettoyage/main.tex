@@ -5,12 +5,16 @@
 %\usepackage{hyperref}
 \usepackage{lineno}
 \usepackage{colortbl}
+\usepackage[pdftex,dvipsnames]{xcolor}
+\newcommand{\Rim}[1]{\textcolor{Green}{#1}}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{multirow}
+%\usepackage{hyperref} %for url
+
 \begin{document}
 \linenumbers
 \begin{frontmatter}
-\title{Using Model-checking for precision spraying}
+\title{Variable spraying control using model-checking}
 
 
 \author[inst1]{Rim Saddem-Yagoubi}
@@ -206,7 +210,16 @@ In order to build the Precision Spraying Mapping (PSM), step 1 takes as input th
 \subsubsection{Vegetation characterisation \label{sec:vegcar}}
 A state of vegetation is described by a set of qualitative values which characterises its spatial density. Each vegetation block is considered homogeneous in its characteristics, which are defined according to its height. 
 
-Each vegetation block is divided into 3 horizontal sections depending on the height. The very low area, which mainly consists of trunk and weeds or grass, is not considered for spraying. Then we consider a "Low" (L) and a "Middle" (M) sections, and finally the "High" (H) section for the higher canopy. The total height (T) is also considered as a section, such that T=L+M+H. In our example, the thresholds to separate the height sections will be defined in section \ref{lidar}.
+\Rim{Each vegetation block is divided into 3 horizontal sections depending on the height (see figure \ref{fig:HautVegetation}): "Low" section (L) for the canopy height between h1 and h2, "Middle" section (M) for the canopy height between h2 and h3, "High" section (H) for the canopy higher than h3. The very low area, below h1, which mainly consists of trunk and weeds or grass, is not considered for spraying. The total height (T) is also considered as a section, such that T=L+M+H. In our example, the thresholds to separate the height sections (h1, h2 and h3) will be defined in section \ref{lidar}.
+}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=6.4cm]{HautVeg.png}
+		\caption{Illustration of the vegetation height division} 
+		\label{fig:HautVegetation}
+	\end{center}
+\end{figure}
 
 Thus, a vegetation state is represented as a quadruplet T-L-M-H of density values. 3 qualitative density values are considered: 0, 1, 2, which respectively represent absence of vegetation, low vegetation density, and high vegetation density. 
 
@@ -501,7 +514,8 @@ To overcome the combinatorial explosion problem that may result from this, a dec
 
 \subsection{2D LiDAR information of canopy structure}
 A Sick LMS100 (SICK AG, Düsseldorf, Germany) 2D LiDAR sensor was used in the study. The LMS100 is a fully-automatic divergent laser scanner based on time-of-flight (TOF) measurement with a typical error of $\pm 30$ mm, a selectable angular resolution set to $0.5^{\circ}$, a maximum scan angle of $270^{\circ}$ and a maximum range of 20 m. With these settings, there were 541 distances recorded for each complete laser rotation, which is hereafter referred to as a “scan”, and scans were obtained at 50 Hz. The LMS100 laser emission wavelength is 905 nm (near infrared) and it is Class one eye-safe. The LMS100 and data logging system were mounted on a purposely-built stainless-steel mast fixed behind the tractor operating the sprayer, according to a previously described procedure \cite{cheraiet2020algorithm}. The LMS100 sensor height ranged from 1.1 m above ground level. The tractor was driven along the vineyard rows at a constant forward travel speed of 5 $km/h$, with a typical error of ± 0.21 $km/h$.
-This sensing system was coupled to a Real Time Kinematic (RTK) GNSS receiver (Teria GSM correction, Vitry-sur-Seine, France) to identify the start and end point of the sampling units. Once the starting point was set, scans were aggregated using a fixed forward distance based on the constant tractor speed to generate a 3D point cloud reconstruction of the vine environment. The sprayer replicated commercial operations, i.e. the tractor only traversed every second row so that the canopy was only scanned from one side. This differs from most previous research activities with LiDAR sensors, but was deliberately done to approximate commercial conditions. Full details of the system set-up are given in \cite{cheraiet2020algorithm}.% Cheraiet et al. (2020).
+This sensing system was coupled to a Real Time Kinematic (RTK) GNSS receiver (Teria GSM correction, Vitry-sur-Seine, France) to identify the start and end point of the sampling units. Once the starting point was set, scans were aggregated using a fixed forward distance based on the constant tractor speed to generate a 3D point cloud reconstruction of the vine environment. %The sprayer replicated commercial operations, i.e. the tractor only traversed every second row so that the canopy was only scanned from one side. This differs from most previous research activities with LiDAR sensors, but was deliberately done to approximate commercial conditions. 
+Full details of the system set-up are given in \cite{cheraiet2020algorithm}.% Cheraiet et al. (2020).
 
 \subsection{Field data}
 % ADAPTER SELON 1 ou 2 DATES 
@@ -519,13 +533,17 @@ In the following, the AMPS method and the decomposition methodology will be impl
 \section{RESULTS \& DISCUSSION}
 \label{results}
 
-In this section, we will apply the AMPS method for real vine LiDAR data. The optimal command sequence, taking into account sprayer dynamics, will be compared to classical spraying without automation.
+In this section, we will apply the AMPS method for real vine LiDAR data. The optimal command sequence, taking into account sprayer dynamics, will be compared to classical spraying. \Rim{The classic spraying process is carried out using only the two hands (LH\&HH) of the sprayer without any automation during the entire spraying process.}
 
 The AMPS step 1 consists on defining the precision spraying mapping, which maps each vegetation state to two spray commands $C_{best}$ and $C_{alt}$. We have already to provide this map in Section \ref{step1} (cf. Table \ref{tb:PSM}). Now, we proceed to apply step 2.
 
 \subsection{Computation of blocks and spatialized recommendation map}
 
-The AMPS step 2 consists in the processing of the LiDAR data to obtain $C_{best}$, $C_{alt}$ and the duration of each vegetation block for the studied plot. The sprayer is supposed to move at 1.4 $m/s$. The length of a block is expressed as a function of the time needed to spray it. The tables \ref{tb:step2Aglae}, \ref{tb:stepVegState} and \ref{tb:stepAnalysis} provide for an analysis of the step 2 of the algorithm and are explained and commented in the sequel.
+The AMPS step 2 consists in the processing of the LiDAR data to obtain $C_{best}$, $C_{alt}$ and the duration of each vegetation block for the studied plot. The sprayer is supposed to move at 1.4 $m/s$. The length of a block is expressed as a function of the time needed to spray it. 
+
+\Rim{The algorithm, based on filtering and aggregation rules (see section \ref{sec:step2}), was implemented using the Pyzo IDE, a free and open-source computing environment based on Python 3\footnote{{https://pyzo.org/index.html}}}. 
+
+The tables \ref{tb:step2Aglae}, \ref{tb:stepVegState} and \ref{tb:stepAnalysis} provide for an analysis of the algorithm and are explained and commented in the sequel.
 
 In the table \ref{tb:step2Aglae}, the column "Row" provides an identifier to each row, this ID is a value between 1 and 5. The column "D" represents the duration of time (in s) needed to spray the row in seconds (s). The column "NB" gives the number of blocks forming the row, the column "M" provides the number of blocks with a missing vegetation and the column "NS" gives the number of blocks where the command $C_{best}$ is equal to the command $C_{alt}$. The column "$D_{max}$" (in s) provides the higher duration of a block in the row, the column " $ND_{min}$" provides the number of blocks having the smaller duration of 0.4 s in the row and the column " $NL$" provides the number of blocks having a duration longer than 1 s in the row.
 
@@ -547,7 +565,7 @@ In the table \ref{tb:step2Aglae}, the column "Row" provides an identifier to eac
 	\end{center}
 \end{table}
 
-In all rows, the number of "same command" blocks represent around 50\% of the number of blocks forming the row. This has two consequence for this particular field and date: the optimisation has an effect on approximately half of the blocks of row, and there are many blocks that can be chosen to support model decomposition for calculating optimal spraying sequences.
+In all rows, the number of "same command" blocks \Rim{(see column "NS")} represent around 50\% of the number of blocks forming the row. This has two consequence for this particular field and date: the optimisation has an effect on approximately half of the blocks of row, and there are many blocks that can be chosen to support model decomposition for calculating optimal spraying sequences. \Rim{The number of blocks having the smaller duration of 0.4 s (see column "$ND_{min}$") represents 1/4 of the number of blocks forming the row which means that the resolution chosen is appropriate for the sprayer's dynamics. The number of blocks having a duration longer than 1 s (see column $NL$) gives an idea about homogeneous blocks and this show that the experiment was valid.}
 
 \begin{table}[h]
 	\begin{center}
@@ -594,7 +612,7 @@ In all rows, the number of "same command" blocks represent around 50\% of the nu
 The table \ref{tb:stepVegState} describes for each row the vegetation states encountered before and after applying step 2. Before step 2, states are related to vegetation slices (thin blocks) and after it, states are related to vegetation blocks of various sizes.
 Some states are deleted and others are added due to the aggregation rules implemented in step 2.
 Deleted states (resp. added states) are represented with cross (X) in a red color (resp. blue color). Black cross means that the vegetation state is encountered before and after applying step 2. \\
-It can be seen that some vegetation states are present in all rows such as (T-H-M-L) = (1-1-1-1). The vegetation state (T-H-M-L) = (1-1-2-0) is added in the row 1 after applying $RAF1$ and some states are present in some rows and deleted after applying $RAF1$ such as (T-H-M-L) = (1-0-1-1) present in the rows 1, 2 and 3 and deleted in rows 4 and 5. This is due to the minimum size of the block. Many states that are present in slices are deleted when applying step2. Only one state is added and in only one row.
+It can be seen that some vegetation states are present in all rows such as (T-H-M-L) = (1-1-1-1). The vegetation state (T-H-M-L) = (1-1-2-0) is added in the row 1 after applying $RAF1$ and some states are present in some rows and deleted after applying $RAF1$ such as (T-H-M-L) = (1-0-1-1) present in the rows 1, 2 and 3 and deleted in rows 4 and 5. This is due to the minimum size of the block. Many states that are present in slices are deleted when applying step2. Only one state is added and in only one row. \Rim{If one refers to Table \ref{tab:SRM}, the vegetation state (T-H-M-L) = (1-0-0-1) is deleted after appling step 2. It is important to note that deleted vegetation states is due to the dynamics of the sprayer, which is linked to the technology, so if the reaction time were faster, no states would be deleted.}
 
 \begin{table}[!ht]
 	\begin{center}
@@ -679,7 +697,7 @@ In the table \ref{tb:CompCost}, the column "Row" is the identifier of each row. 
 	\end{center}
 \end{table}
 
-The optimal cost is the lowest in the Table \ref{tb:CompCost}. It provides a saving of 2\% to 4 \% with reference to a sequence choosing always $C_{best}$ (best cost) and a saving of 10\% to 28 \% with reference to classical spraying (constant $LH\$HH$, which requires no automation). The saving between best cost and optimal cost is small in this example. This is due to the number of blocks having the same commands which represents around 50\% of the number of blocks forming the row.
+The optimal cost is the lowest in the Table \ref{tb:CompCost}. It provides a saving of 2\% to 4 \% with reference to a sequence choosing always $C_{best}$ (best cost) and a saving of 10\% to 28 \% with reference to classical spraying (constant $LH\&HH$, which requires no automation). The saving between best cost and optimal cost is small in this example. This is due to the number of blocks having the same commands which represents around 50\% of the number of blocks forming the row.
 
 
 Besides performances of the approach on the specific example provided, the interest of the AMPS method is its genericity (the same model can be used for the verification of several properties) and its capacity to manage complexity (dealing with the combinatorial explosion problem using the decomposition methodology). 
